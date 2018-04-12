@@ -80,7 +80,7 @@ int64_t LFSIOContext::seekFileData(int64_t offset, int whence)
 	else if (whence == AVSEEK_SIZE)
 		return size;
 
-	return fileDataPos = fileDataPos > size ? size : (fileDataPos < 0 ? 0 : fileDataPos);
+	return fileDataPos = offset > size ? size : (offset < 0 ? 0 : offset);
 }
 
 int LFSIOContext::read(void *opaque, uint8_t *buf, int bufSize)
