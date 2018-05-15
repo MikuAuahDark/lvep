@@ -161,6 +161,12 @@ void LVEPVideoStream::play()
 	return this->love::video::VideoStream::play();
 }
 
+void LVEPVideoStream::pause()
+{
+	frameSync->update(love::timer::Timer::getTime()-previousTime);
+	return this->love::video::VideoStream::pause();
+}
+
 void LVEPVideoStream::tinySeek(double target)
 {
 	while (target > stream->translateTimestamp(frame->pkt_pts + frame->pkt_duration))
